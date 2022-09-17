@@ -15,7 +15,8 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-image: url("the-melting-watch.gif");
+  background-color: #cccccc;
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -33,7 +34,7 @@ textarea{
   border-width: 3px;
   border-style: solid;
   border-radius: 5px;
-  background-color: aquamarine;
+  background-color: hsl(160, 100%, 75%, 50%);
   width: 40vw;
 }
 
