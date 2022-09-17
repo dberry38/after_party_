@@ -21,6 +21,26 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+.lead {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.timeBox {
+  margin: auto;
+  padding-top: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: aquamarine;
+  width: 40vw;
+}
+
+#headerClock {
+  font-size: 36px;
+}
+
 .description{
   white-space: pre-wrap;
 }
