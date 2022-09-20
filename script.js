@@ -9,33 +9,23 @@ setInterval(() => {
   )}`;
 }, 1000);
 
-var dailyHours = 8;
+// var hourTabs = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm']
+// var thisHour = [9, 10, 11, 12, 13, 14, 15, 16];
 
-var textEdit = document.getElementById("addEventText");
-var saveButton = document.getElementById("saveButt1");
+for (var i = 9; i < 17; i++) {
+    var container = $('#container');
+    var newRow = $('<div></div>')
 
-function saveLastEvent() {
-  var saveNewEvent = textEdit.value;
-  localStorage.setItem("saveNewEvent", JSON.stringify(saveNewEvent));
+    var hourTag = $('<div></div>', {class: 'hour'});
+    hourTag.innerHTML(i);
+    hourTag.appendTo(newRow);
+
+    var eventText = $('<textarea></textarea>', {class: 'textarea'});
+    eventText.appendTo(newRow);
+
+    var saveButton = $('<div></div>', {class: 'saveBtn'});
+    saveButton.appendTo(newRow);
+
+
+
 }
-
-function currentEvent() {
-  var currentEventText = JSON.parse(localStorage.getItem("saveNewEvent"));
-  if (currentEventText !== null) {
-    textEdit.innerHTML = currentEventText;
-  } else {
-    return;
-  }
-}
-
-saveButton.addEventListener("click", function (event) {
-  event.preventDefault();
-  saveLastEvent();
-  currentEvent();
-});
-
-function init() {
-  currentEvent();
-}
-
-init();
