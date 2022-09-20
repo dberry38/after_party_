@@ -10,7 +10,7 @@ setInterval(() => {
 }, 1000);
 
 
-
+//This for loop will generate the HTML elements
 var container = $('#container');
 
 for (var i = 9; i < 17; i++) {
@@ -52,3 +52,35 @@ for (var i = 9; i < 17; i++) {
 
 
 //ok, so now the hard part. get all this to save to local.
+var generatedButtons = document.getElementsByClassName("saveBtn");
+
+// function saveNewText() {
+//   var textToSave = this.siblings(".textarea");
+//   localStorage.setItem("currentEventText", JSON.stringify(textToSave));
+//   renderCurrentEvent();
+// };
+
+for (var i in generatedButtons) {
+  generatedButtons[i].onclick = function(event) {
+    event.preventDefault();
+    
+    saveNewText();
+  }
+};
+
+
+function renderCurrentEvent() {
+  var currentText = JSON.parse(localStorage.getItem("currentEventText"));
+  if (currentText !== null) {
+  this.siblings(".textarea").text(currentText);
+  } else {
+    return;
+  }
+};
+
+
+function init() {
+  renderCurrentEvent();
+}
+
+init();
