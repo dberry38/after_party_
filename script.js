@@ -9,23 +9,46 @@ setInterval(() => {
   )}`;
 }, 1000);
 
-// var hourTabs = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm']
-// var thisHour = [9, 10, 11, 12, 13, 14, 15, 16];
+
+
+var container = $('#container');
 
 for (var i = 9; i < 17; i++) {
-    var container = $('#container');
-    var newRow = $('<div></div>')
+    var newRow = $('<div>', {class: 'row'});
 
-    var hourTag = $('<div></div>', {class: 'hour'});
-    hourTag.innerHTML(i);
-    hourTag.appendTo(newRow);
+    var hourTag = $('<div>', {class: 'hour col-1'});
+    newRow.append(hourTag);
 
-    var eventText = $('<textarea></textarea>', {class: 'textarea'});
-    eventText.appendTo(newRow);
+    //this little if statement here makes the hours display in regular, not military time, with correct 'am' or 'pm' designation.
+    if (i<12) {
+      hourTag.text(i + ' am')
+    } else if (i==12) {
+      hourTag.text(i + ' pm')
+    } else {
+      hourTag.text((i-12) + ' pm')
+    };
 
-    var saveButton = $('<div></div>', {class: 'saveBtn'});
+    var eventText = $('<textarea>', {class: 'textarea col-10'});
+    newRow.append(eventText);
+
+    var saveButton = $('<button>', {class: 'saveBtn col-1'});
+    var icon = $('<i>', {class: 'fas fa-save'});
+    icon.appendTo(saveButton);
     saveButton.appendTo(newRow);
 
+    newRow.appendTo(container);
+    //and with that, we have our dynamic HTML working, for the most part.
+
+    //lets see if we can make a loop to assign the past, present, future attributes
+    console.log(currentTime.format('H'));
+    if (i < currentTime.format('H')) {
+      eventText.addClass('past')
+    } else if (i == currentTime.format('H')) {
+      eventText.addClass('present')
+    } else {
+      eventText.addClass('future')
+    };
+};
 
 
-}
+//ok, so now the hard part. get all this to save to local.

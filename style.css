@@ -40,6 +40,18 @@ header {
   width: 50vw;
 }
 
+#currentDay {
+  font-size: 32px;
+}
+
+#currentDate {
+  font-size: 26px;
+}
+
+#headerClock {
+  font-size: 42px;
+}
+
 textarea {
   background: transparent;
   border: none;
@@ -73,6 +85,11 @@ textarea {
 }
 
 .hour {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
@@ -93,15 +110,24 @@ textarea {
   color: white;
 }
 
-.saveBtn {
+.saveBtn, i {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  transition: all .3s ease-in-out;
+    font-size: 24px;
+  transition: all .3s ease-in-out;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all .3s ease-in-out;
+.saveBtn:hover,
+.saveBtn:hover i {
+  background-color: #00d0ff;
+  font-size: 36px;
+}
+
+.footsy {
+  display: flex;
+  justify-content: center;
 }
