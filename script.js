@@ -28,11 +28,12 @@ for (var i = 9; i < 17; i++) {
       hourTag.text((i-12) + ' pm')
     };
 
-    var eventText = $('<textarea>', {class: 'textarea col-10'});
+    var eventText = $('<textarea>', {class: 'textarea col-10', id:i});
     newRow.append(eventText);
 
     var saveButton = $('<button>', {class: 'saveBtn col-1'});
     var icon = $('<i>', {class: 'fas fa-save'});
+
     icon.appendTo(saveButton);
     saveButton.appendTo(newRow);
 
@@ -48,39 +49,28 @@ for (var i = 9; i < 17; i++) {
     } else {
       eventText.addClass('future')
     };
+
+
+
 };
 
 
-//ok, so now the hard part. get all this to save to local.
+//--------BIG THANKS to Dominick Simone from AskBCS for helping me figure out how everything goes together at the end here
+
 var generatedButtons = document.getElementsByClassName("saveBtn");
 
-// function saveNewText() {
-//   var textToSave = this.siblings(".textarea");
-//   localStorage.setItem("currentEventText", JSON.stringify(textToSave));
-//   renderCurrentEvent();
-// };
+function saveNewText() {
+  var textToSave = $(this).siblings("textarea").val();
+  var textId = $(this).siblings("textarea").attr("id");
+  localStorage.setItem("hour-" + textId, JSON.stringify(textToSave));
+};
 
-for (var i in generatedButtons) {
-  generatedButtons[i].onclick = function(event) {
-    event.preventDefault();
-    
-    saveNewText();
-  }
+for (var i = 0; i < generatedButtons.length; i++) {
+  generatedButtons[i].addEventListener("click", saveNewText)
 };
 
 
-function renderCurrentEvent() {
-  var currentText = JSON.parse(localStorage.getItem("currentEventText"));
-  if (currentText !== null) {
-  this.siblings(".textarea").text(currentText);
-  } else {
-    return;
-  }
+for (i = 9; i < generatedButtons.length + 9; i++) {
+  var currentText = JSON.parse(localStorage.getItem("hour-" + i));
+  $('#' + i).text(currentText)
 };
-
-
-function init() {
-  renderCurrentEvent();
-}
-
-init();
