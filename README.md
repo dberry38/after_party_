@@ -25,9 +25,9 @@ Click the corresponding save icon to the right to save your event to the schedul
 <br>
 
 ## Screenshots
-<img src="./images/ScrnSht 1.png" alt="Page header" />
-<img src="./images/ScrnSht 2.png" alt="Hour rows" />
-<img src="./images/ScrnSht 3.png" alt="Entering text in the 12pm hour row" />
+<img src="./images/Screenshot1.jpg" alt="Page header" />
+<img src="./images/Screenshot2.jpg" alt="Hour rows" />
+<img src="./images/Screenshot3.jpg" alt="Entering text in the 12pm hour row" />
 <br>
 <br>
 
